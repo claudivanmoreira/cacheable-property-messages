@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.ceosites</groupId>
+	<artifactId>cacheable-property-messages</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>cacheable-property-messages</name>
+	<description>A library for manager cacheable messages from property files</description>
+
+	<properties>
+		<google-guava.version>21.0</google-guava.version>
+		<junit.version>4.12</junit.version>
+		<commons-configuration.version>1.10</commons-configuration.version>
+		<maven.source.compiler.version>1.7</maven.source.compiler.version>
+		<maven.target.compiler.version>1.7</maven.target.compiler.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${google-guava.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>${commons-configuration.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>${maven.source.compiler.version}</source>
+					<target>${maven.target.compiler.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
