@@ -8,11 +8,12 @@
 	<description>A library for manager cacheable messages from property files</description>
 
 	<properties>
-		<google-guava.version>21.0</google-guava.version>
+		<google-guava.version>20.0</google-guava.version>
 		<junit.version>4.12</junit.version>
 		<commons-configuration.version>1.10</commons-configuration.version>
-		<maven.source.compiler.version>1.7</maven.source.compiler.version>
-		<maven.target.compiler.version>1.7</maven.target.compiler.version>
+		<maven.source.compiler.version>1.6</maven.source.compiler.version>
+		<maven.target.compiler.version>1.6</maven.target.compiler.version>
+		<logback.version>1.2.2</logback.version>
 	</properties>
 
 	<dependencies>
@@ -30,6 +31,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
 		</dependency>
 	</dependencies>
 
