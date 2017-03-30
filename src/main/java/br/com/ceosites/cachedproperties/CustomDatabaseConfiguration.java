@@ -1,4 +1,4 @@
-package br.com.ceosites.cacheableconfiguration;
+package br.com.ceosites.cachedproperties;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

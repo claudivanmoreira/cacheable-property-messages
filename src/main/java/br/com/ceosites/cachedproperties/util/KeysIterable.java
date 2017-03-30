@@ -1,4 +1,4 @@
-package br.com.ceosites.cacheableconfiguration.util;
+package br.com.ceosites.cachedproperties.util;
 
 import java.util.Arrays;
 import java.util.Iterator;

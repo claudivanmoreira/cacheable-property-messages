@@ -1,10 +1,10 @@
-package br.com.ceosites.cacheableconfiguration.cache;
+package br.com.ceosites.cachedproperties.cache;
 
 import java.util.Map;
 
 import com.google.common.cache.CacheLoader;
 
-import br.com.ceosites.cacheableconfiguration.readers.ReaderStrategy;
+import br.com.ceosites.cachedproperties.readers.ReaderStrategy;
 
 public class ConfigurationCacheLoader extends CacheLoader<String, String> {
 	

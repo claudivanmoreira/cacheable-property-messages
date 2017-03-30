@@ -1,4 +1,4 @@
-package br.com.ceosites.cacheableconfiguration.cache;
+package br.com.ceosites.cachedproperties.cache;
 
 public class CacheConstants {
 	

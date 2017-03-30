@@ -1,4 +1,4 @@
-package br.com.ceosites.cacheableconfiguration.cache;
+package br.com.ceosites.cachedproperties.cache;
 
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.TimeUnit;
@@ -68,7 +68,7 @@ public class ConfigurationCache {
 		this.cacheLoader = cacheLoader;
 	}
 	
-	public ConcurrentMap<String, String> getCacheAsmap() {
+	public ConcurrentMap<String, String> getCacheAsMap() {
 		return cache.asMap();
 	}
 	

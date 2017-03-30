@@ -1,4 +1,4 @@
-package br.com.ceosites.cacheableconfiguration.readers;
+package br.com.ceosites.cachedproperties.readers;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import java.util.Map;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.lang.StringUtils;
 
-import br.com.ceosites.cacheableconfiguration.util.KeysIterable;
+import br.com.ceosites.cachedproperties.util.KeysIterable;
 
 public class ProperyReaderStrategy implements ReaderStrategy {
 	

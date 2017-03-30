@@ -1,9 +1,9 @@
-package br.com.ceosites.cacheableconfiguration.readers;
+package br.com.ceosites.cachedproperties.readers;
 
 import java.util.Map;
 
-import br.com.ceosites.cacheableconfiguration.CustomDatabaseConfiguration;
-import br.com.ceosites.cacheableconfiguration.util.KeysIterable;
+import br.com.ceosites.cachedproperties.CustomDatabaseConfiguration;
+import br.com.ceosites.cachedproperties.util.KeysIterable;
 
 public class DatabaseReaderStrategy implements ReaderStrategy {
 	
