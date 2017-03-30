@@ -1,4 +1,4 @@
-package br.com.ceosites.cacheablepropertiesmessages.cache.test;
+package br.com.ceosites.cachedproperties.cache.test;
 
 import java.util.Arrays;
 import java.util.HashMap;

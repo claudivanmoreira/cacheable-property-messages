@@ -8,15 +8,15 @@
 		</layout>
 	</appender>
 
-	<logger name="br.com.ceosites.cacheablepropertymessages" level="debug" additivity="false">
+	<logger name="br.com.ceosites.cachedproperties" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="org.apache.commons.configuration" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
 	<logger name="com.google.common" level="debug" additivity="false">
-		<appender-ref ref="STDOUT" />
-	</logger>
-	
-	<logger name="org.apache.commons" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
