@@ -6,7 +6,7 @@ import java.util.List;
 
 public class KeysIterable implements Iterable<String> {
 
-	private Iterator<String> keysIterator; 
+	private final Iterator<String> keysIterator; 
 
 	public KeysIterable(List<String> keyList) {
 		this.keysIterator = keyList.iterator();

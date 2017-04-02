@@ -4,7 +4,7 @@
 	<groupId>br.com.ceosites</groupId>
 	<artifactId>cacheable-property-messages</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cacheable-property-messages</name>
+	<name>cached-properties</name>
 	<description>A library for manager cacheable messages from property files</description>
 
 	<properties>
@@ -15,6 +15,8 @@
 		<maven.target.compiler.version>1.6</maven.target.compiler.version>
 		<logback.version>1.2.2</logback.version>
 		<jcl-over-slf4j.version>1.7.22</jcl-over-slf4j.version>
+                <dbcp2.version>2.1</dbcp2.version>
+                <hsqldb.version>2.3.2</hsqldb.version>
 	</properties>
 
 	<dependencies>
@@ -43,6 +45,17 @@
 		    <artifactId>jcl-over-slf4j</artifactId>
 		    <version>${jcl-over-slf4j.version}</version>
 		</dependency>
+                <dependency>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-dbcp2</artifactId>
+                    <version>${dbcp2.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.hsqldb</groupId>
+                    <artifactId>hsqldb</artifactId>
+                    <version>${hsqldb.version}</version>
+                </dependency>
+
 	</dependencies>
 
 	<build>

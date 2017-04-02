@@ -3,8 +3,9 @@ package br.com.ceosites.cachedproperties.readers;
 import java.util.Map;
 
 import br.com.ceosites.cachedproperties.util.KeysIterable;
+import com.google.common.base.Optional;
 
-public interface ReaderStrategy {
+public interface PropertyReaderStrategy {
 	/**
 	 * 
 	 * @return iterable contendo todas os nomes de chaves configuradas
@@ -15,11 +16,11 @@ public interface ReaderStrategy {
 	 * @param key nome da chave para busca
 	 * @return Valor da chave como String, ou uma String vazia ("") caso a chaves nao seja encontrada.
 	 */
-	public String getValue(String key);
+	public Optional<String> getValue(String key);
 	/**
 	 * 
 	 * @return Map contendo as chaves e seus valores configurados 
 	 */
-	public Map<String, String> getMapKeys();
+	public Map<String, Optional<String>> getMapKeys();
 
 }

@@ -5,9 +5,9 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.ceosites.cachedproperties.cache.ConfigurationCache;
-import br.com.ceosites.cachedproperties.cache.ConfigurationCacheLoader;
-import br.com.ceosites.cachedproperties.readers.ProperyReaderStrategy;
+import br.com.ceosites.cachedproperties.cache.PropertyCache;
+import br.com.ceosites.cachedproperties.cache.PropertyCacheLoader;
+import br.com.ceosites.cachedproperties.readers.FileBasedConfigurationReaderStrategy;
 
 public class ProperyReaderStrategyTest {
 	
@@ -18,26 +18,26 @@ public class ProperyReaderStrategyTest {
 	
 	@Test
 	public void testCacheProperty() {
-		PropertiesConfiguration configuration = new PropertiesConfiguration();
-		try {
-			configuration.load("cached.properties");
-			ProperyReaderStrategy readerStrategy = new ProperyReaderStrategy(configuration);
-			ConfigurationCache cache = new ConfigurationCache(new ConfigurationCacheLoader(readerStrategy), 3L, 3L, 20L);
-			System.out.println(cache.getCachedKey("text.color"));
-			System.out.println(cache.getCachedKey("page.width"));
-			System.out.println(cache.getCachedKey("pessoa.nome"));
-			Thread.sleep(4000);
-			System.out.println(cache.getCachedKey("page.width"));
-			System.out.println(cache.getCachedKey("pessoa.nome"));
-			Thread.sleep(2000);
-			System.out.println(cache.getCachedKey("page.width"));
-			System.out.println(cache.getCachedKey("pessoa.nome"));
-			
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		PropertiesConfiguration configuration = new PropertiesConfiguration();
+//		try {
+//			configuration.load("cached.properties");
+//			FileBasedConfigurationReaderStrategy readerStrategy = new FileBasedConfigurationReaderStrategy(configuration);
+//			PropertyCache cache = new PropertyCache(new PropertyCacheLoader(readerStrategy), 3L, 3L, 20L);
+//			System.out.println(cache.getCachedProperty("text.color"));
+//			System.out.println(cache.getCachedProperty("page.width"));
+//			System.out.println(cache.getCachedProperty("pessoa.nome"));
+//			Thread.sleep(4000);
+//			System.out.println(cache.getCachedProperty("page.width"));
+//			System.out.println(cache.getCachedProperty("pessoa.nome"));
+//			Thread.sleep(2000);
+//			System.out.println(cache.getCachedProperty("page.width"));
+//			System.out.println(cache.getCachedProperty("pessoa.nome"));
+//			
+//		} catch (ConfigurationException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 	}
 
