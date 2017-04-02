@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class DatabaseReaderStrategyTest {
+public class CachedDatabasePropertiesTest {
 
     private CustomDatabaseConfiguration configuration;
     private PropertyCache cache;
@@ -18,7 +18,7 @@ public class DatabaseReaderStrategyTest {
     @Before
     public void setup() {
         configuration = TestUtils.createDatabaseConfiguration();
-        cache = TestUtils.createPropertyCache(configuration);
+        cache = TestUtils.createDatabasePropertyCache(configuration);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class DatabaseReaderStrategyTest {
             Assert.assertEquals("User add with sucess", cache.getCachedProperty("add.user.success.message"));
 
         } catch (Exception ex) {
-            Logger.getLogger(DatabaseReaderStrategyTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CachedDatabasePropertiesTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -50,29 +50,35 @@ public class DatabaseReaderStrategyTest {
         try {
             /* Get keys from configuration APP_CONFIG */
             configuration.setName("APP_CONFIG");
-            /* Initial size is 0 */
+            /* Cache miss */
             Assert.assertEquals("admin", cache.getCachedProperty("myrest.api.auth.user"));
+            /* Cache miss */
             Assert.assertEquals("123", cache.getCachedProperty("myrest.api.auth.pwd"));
+            /* Cache miss */
             Assert.assertEquals("admin", cache.getCachedProperty("myrest.api.auth.user"));
+            /* Cache miss */
             Assert.assertEquals("123", cache.getCachedProperty("myrest.api.auth.pwd"));
-            /* Two keys in cache */
+            
             /* Get keys from configuration USER_MESSAGES */
             configuration.setName("USER_MESSAGES");
+            /* Cache miss */
             Assert.assertEquals("User add with sucess", cache.getCachedProperty("add.user.success.message"));
+            /* Cache hit */
             Assert.assertEquals("User add with sucess", cache.getCachedProperty("add.user.success.message"));
-            /* Three keys in cache */
-            /* Waiting for cache timeout */
+            
             System.out.println("Waiting for cache expire");
-            Thread.sleep(2000);
-            /* Cached keys has expired and size is 0 */
-            /* Reload Keys */
+            Thread.sleep(3000);
+            
+            /* Reload keys from configuration APP_CONFIG */
             configuration.setName("APP_CONFIG");
+            /* Cache miss, evictionCount=1 */
             Assert.assertEquals("admin", cache.getCachedProperty("myrest.api.auth.user"));
+            /* Cache miss, evictionCount=2 */
             Assert.assertEquals("123", cache.getCachedProperty("myrest.api.auth.pwd"));
+            /* Cache hit */
             Assert.assertEquals("admin", cache.getCachedProperty("myrest.api.auth.user"));
-            /* One key in cache */
         } catch (Exception ex) {
-            Logger.getLogger(DatabaseReaderStrategyTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CachedDatabasePropertiesTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

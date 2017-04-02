@@ -9,11 +9,14 @@ import br.com.ceosites.cachedproperties.CustomDatabaseConfiguration;
 import br.com.ceosites.cachedproperties.cache.PropertyCache;
 import br.com.ceosites.cachedproperties.cache.PropertyCacheBuilder;
 import br.com.ceosites.cachedproperties.cache.PropertyCacheLoader;
-import br.com.ceosites.cachedproperties.cache.test.DatabaseReaderStrategyTest;
+import br.com.ceosites.cachedproperties.cache.test.CachedDatabasePropertiesTest;
 import br.com.ceosites.cachedproperties.readers.DatabaseBasedConfigurationReaderStrategy;
+import br.com.ceosites.cachedproperties.readers.FileBasedConfigurationReaderStrategy;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
 
 /**
  *
@@ -22,7 +25,7 @@ import javax.sql.DataSource;
 public class TestUtils {
     
     
-    public static PropertyCache createPropertyCache(CustomDatabaseConfiguration dataseConfiguration) {
+    public static PropertyCache createDatabasePropertyCache(CustomDatabaseConfiguration dataseConfiguration) {
         DatabaseBasedConfigurationReaderStrategy readerStrategy = new DatabaseBasedConfigurationReaderStrategy(dataseConfiguration);
         PropertyCacheLoader cacheLoader = new PropertyCacheLoader(readerStrategy);
         PropertyCache cache = null;
@@ -35,7 +38,7 @@ public class TestUtils {
                     .withPropertyCacheLoader(cacheLoader)
                     .buildCache();
         } catch (Exception ex) {
-            Logger.getLogger(DatabaseReaderStrategyTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CachedDatabasePropertiesTest.class.getName()).log(Level.SEVERE, null, ex);
         }
         return  cache;
     }
@@ -48,5 +51,33 @@ public class TestUtils {
         String name = "APP_CONFIG";
         DataSource datasource = DatabaseUtils.prepareDatabase();
         return  new CustomDatabaseConfiguration(datasource, table, nameColumn, keyColumn, valueColumn, name);
+    }
+
+    public static PropertiesConfiguration createFileConfiguration() {
+        PropertiesConfiguration configuration = new PropertiesConfiguration();
+        try {
+            configuration.load("src/main/resources/cached.properties");
+        } catch (ConfigurationException ex) {
+            Logger.getLogger(TestUtils.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return configuration;
+    }
+    
+     public static PropertyCache createFilePropertyCache(PropertiesConfiguration configuration) {
+         FileBasedConfigurationReaderStrategy readerStrategy = new FileBasedConfigurationReaderStrategy(configuration);
+        PropertyCacheLoader cacheLoader = new PropertyCacheLoader(readerStrategy);
+        PropertyCache cache = null;
+        try {
+            cache = PropertyCacheBuilder.newBuilder()
+                    .withCacheSize(100L)
+                    .withIdleTime(2L)
+                    .withTimeToLive(2L)
+                    .loadOnStartup(false)
+                    .withPropertyCacheLoader(cacheLoader)
+                    .buildCache();
+        } catch (Exception ex) {
+            Logger.getLogger(CachedDatabasePropertiesTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return  cache;
     }
 }
